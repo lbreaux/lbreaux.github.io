@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Website</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+
+<!-- Rubik Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    
+<!-- CSS -->
+    <style>
+    /*   Reset   */
+    html, body, div, span, applet, object, iframe,
+    h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+    a, abbr, acronym, address, big, cite, code,
+    del, dfn, em, img, ins, kbd, q, s, samp,
+    small, strike, strong, sub, sup, tt, var,
+    b, u, i, center,
+    dl, dt, dd, ol, ul, li,
+    fieldset, form, label, legend,
+    table, caption, tbody, tfoot, thead, tr, th, td,
+    article, aside, canvas, details, embed, 
+    figure, figcaption, footer, header, hgroup, 
+    menu, nav, output, ruby, section, summary,
+    time, mark, audio, video {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      font-size: 100%;
+      font: inherit;
+      vertical-align: baseline;
+    }
+    /* HTML5 display-role reset for older browsers */
+    article, aside, details, figcaption, figure, 
+    footer, header, hgroup, menu, nav, section {
+      display: block;
+    }
+    body {
+      line-height: 1;
+    }
+    ol, ul {
+      list-style: none;
+    }
+    blockquote, q {
+      quotes: none;
+    }
+    blockquote:before, blockquote:after,
+    q:before, q:after {
+      content: '';
+      content: none;
+    }
+    table {
+      border-collapse: collapse;
+      border-spacing: 0;
+    }
+  /*  End CSS Reset  -----------------*/
+
+
+    body {
+      background-image: url("bg.png");
+      margin: 32px;
+    }
+
+    * {
+      font-family: 'Rubik', sans-serif;
+      color: #d9d9d9;
+    }
+
+    h1 {
+      font-weight: 200;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+    }
+
+    li {
+      list-style: none;
+      background-color:rgba(21, 20, 20, .8);
+      border-radius: 40px;
+      border: 1px solid rgba(217, 217, 217, .4);
+      padding: 40px;
+      font-size: 2.75em;
+      margin-bottom: 24px;
+    }
+
+    .logo {
+      width: 40px;
+      height: 40px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 16px;
+    }
+
+    .foeva {
+      text-align: center;
+      font-weight: 300;
+      text-transform: uppercase;
+      letter-spacing: 16px;
+      font-size: .5em;
+    }
+
+    #generate {
+      position: fixed;
+      bottom: 24px;
+      right: 0px;
+      border-top-left-radius: 50%;
+      border-bottom-left-radius: 50%;
+      background-color: #fff;
+      color: #000;
+      width: 80px;
+      height: 80px;
+      font-size: 4.75em;
+      text-align: center;
+      line-height: 0;
+    }
+
+    </style>
+
+  </head>
+
+  <body>
+
+    <main>
+      <img class="logo" src="logo.png" href="#">
+
+      <ul id="list">
+      </ul>
+
+      <p class="foeva">Kass & Lamb 4 Eva</p>
+    <!-- <button id="clear">clear</button> -->
+    <button id="generate">+</button>
+
+  
+
+    </main>
+	
+  <script>
+    const options = [
+   "What are your dreams and aspirations for the future?",
+"What are your earliest childhood memories?",
+"What's the most profound lesson you've learned in life so far?",
+"How do you define love?",
+"What are your favorite ways to show affection?",
+"How do you cope with stress or difficult emotions?",
+"What are your top five values in life?",
+"Is there a book that profoundly impacted you?, What was it and why?",
+"How do you envision our life together in 10 years?",
+"What makes you feel most alive and fulfilled?",
+"What do you appreciate most about our relationship?",
+"How can we better support and understand each other during tough times?",
+"How would you like to celebrate important milestones together?",
+"What are your favorite ways to express your love and gratitude?",
+"What fears or insecurities do you struggle with, and how can I help?",
+"What was the most significant turning point in your life?",
+"How do you feel about forgiveness, both giving and receiving?",
+"What are some of your favorite memories from our time together?",
+"What's your love language, and how can I speak it more fluently?",
+"How can we maintain a healthy balance between personal space and togetherness?",
+"What are some of the biggest challenges you've faced, and how have they shaped you?",
+"How do you feel about the concept of soulmates?",
+"What role does spirituality or faith play in your life?",
+"How do you imagine our retirement years?",
+"What creative or artistic pursuits make you feel fulfilled?",
+"How do you handle disagreements or conflicts in a relationship?",
+"What's the most courageous thing you've ever done?",
+"How can we keep the romance alive in our relationship?",
+"What's one thing you've always wanted to do, but haven't had the chance to yet?",
+"How do you define success, and how does it apply to our relationship?",
+"What are your thoughts on starting a family, if we haven't already?",
+"How do you envision maintaining a strong emotional connection as we age?",
+"What are your favorite ways to relax and unwind?",
+"How do you approach setting and achieving personal goals?",
+"What are some of the most meaningful compliments you've received?",
+"How do you feel about adventure and trying new experiences?",
+"What are your favorite ways to support and show appreciation for each other?",
+"How can we deepen our emotional intimacy and vulnerability?",
+"What is your love story, from your perspective?",
+"How do you feel about maintaining friendships outside of our relationship?",
+"What are your favorite qualities in a person, and do you see them in me?",
+"How do you handle change and uncertainty in life?",
+"What are your favorite ways to stay connected throughout the day?",
+"How can we improve our communication and understanding of each other's needs?",
+"What's your view on compromise in a relationship?",
+"What activities do you find most fulfilling, and how can we do them together?",
+"How do you want to be remembered by others?",
+"What are your thoughts on balancing work and personal life?",
+"How can we support each other's personal growth and self-improvement?",
+"What are your favorite ways to give and receive affection physically?",
+"How can we create a home environment that feels safe and nurturing?",
+"What does the idea of 'forever' mean to you?",
+"What are your favorite ways to celebrate special occasions?",
+"How can we ensure our relationship remains a priority amid life's challenges?",
+"What are your views on maintaining friendships with ex-partners?",
+"How do you define happiness, and how can we cultivate it together?",
+"What do you believe are the keys to a successful marriage?",
+"What hobbies or interests would you like us to explore together?",
+"How can we foster a sense of teamwork and partnership in our relationship?",
+"What are your favorite ways to show empathy and compassion?",
+"How do you handle jealousy and insecurity in a relationship?",
+"What qualities do you admire in each other, and why?",
+"How can we navigate cultural or religious differences together?",
+"What role does physical intimacy play in our relationship, and how can we enhance it?",
+"How do you approach decision-making in our relationship?",
+"What are your favorite ways to support each other during challenging times?",
+"How can we maintain a sense of individuality while growing together as a couple?",
+"What are your thoughts on financial planning and shared responsibilities?",
+"How do you handle feelings of regret or past mistakes?",
+"What are your favorite ways to express gratitude to one another?",
+"How can we ensure our relationship remains strong during times of distance or travel?",
+"What are your thoughts on parenthood and raising a family?",
+"How do you feel about traditions and creating new ones in our relationship?",
+"What are your favorite ways to foster trust and emotional safety?",
+"How can we support each other's career goals and aspirations?",
+"What are your thoughts on seeking outside help or counseling if needed?",
+"How do you approach forgiveness and healing after a disagreement?",
+"What are your favorite ways to surprise each other in a positive way?",
+"How can we maintain a sense of playfulness and fun in our relationship?",
+"What are your favorite ways to show patience and understanding?",
+"How do you envision supporting each other through the aging process?",
+"What are your thoughts on setting boundaries with family and friends?",
+"How do you feel about discussing and planning for the end of life?",
+"What are your favorite ways to communicate love and appreciation verbally?",
+"How can we support each other in pursuing personal hobbies or interests?",
+"What role does humor play in our relationship, and how can we use it to connect?",
+"How do you approach apologizing and making amends after a mistake?",
+"What are your favorite ways to stay emotionally connected during busy times?",
+"How can we create shared rituals and routines to strengthen our bond?",
+"What are your thoughts on maintaining a healthy work-life balance together?",
+"How do you handle feelings of anger or frustration, and how can I support you?",
+"What are your favorite ways to surprise each other with small gestures of love?",
+"How can we nurture our emotional intimacy and deepen our emotional connection?",
+"What are your thoughts on supporting each other's health and well-being?",
+"How do you feel about giving and receiving gifts in our relationship?",
+"What are your favorite ways to communicate love and appreciation non-verbally?",
+"How can we maintain a sense of adventure and exploration in our relationship?",
+"What are your thoughts on seeking new experiences together as a couple?",
+"How do you feel about maintaining separate interests and hobbies?",
+"What are your favorite ways to make each other feel cherished and loved?",
+"What are your biggest life goals, and what steps are you taking to achieve them?",
+"How do you handle failure and setbacks, and what have you learned from them?",
+"What does success mean to you, and how do you measure it in your life?",
+"If you could change one thing about yourself, what would it be, and why?",
+"What are the most significant events or experiences that have shaped who you are today?",
+"How do you handle stress and maintain a sense of balance in your life?",
+"What are your favorite ways to show kindness and support to others?",
+"What are your greatest fears, and how do you cope with them?",
+"How do you define happiness, and what brings you the most joy in life?",
+"What role does self-care play in your life, and how do you practice it?",
+"What are some of your most cherished childhood memories, and why are they important to you?",
+"How do you approach decision-making, and what factors are essential in your choices?",
+"What are your thoughts on vulnerability, and how do you open up to others?",
+"What are your favorite ways to connect with nature or find tranquility?",
+"How do you express gratitude and appreciation for the people in your life?",
+"What are your favorite ways to seek personal growth and self-improvement?",
+"What are your beliefs about love and relationships, and how have they evolved over time?",
+"What are your passions and interests, and how do they shape your daily life?",
+"How do you find meaning and purpose in your life and work?",
+"What are your favorite ways to connect with others on a deeper level?",
+"How do you handle conflicts in relationships, and what strategies do you use for resolution?",
+"What are your thoughts on forgiveness, both for yourself and others?",
+"How do you approach showing vulnerability and emotional intimacy in a relationship?",
+"What are your favorite ways to give back to your community or make a positive impact?",
+"What are your dreams and aspirations for the future, both personally and professionally?",
+"How do you find inspiration during challenging times?",
+"What are your favorite ways to express creativity or engage in artistic pursuits?",
+"How do you handle self-doubt, and what helps you build self-confidence?",
+"What are your favorite ways to recharge and find inner peace?",
+"What are your thoughts on spirituality or belief in a higher power?",
+"How do you view the concept of destiny or life's purpose?",
+"What are your favorite ways to express love and affection to others?",
+"How do you approach dealing with difficult emotions and expressing them?",
+"What are your thoughts on personal values and how they guide your decisions?",
+"How do you view the importance of family and maintaining close relationships?",
+"What are your favorite ways to show empathy and compassion to others?",
+"How do you handle change and adapt to new situations in your life?",
+"What are your favorite ways to learn and expand your knowledge?",
+"How do you approach setting and achieving personal and professional goals?",
+"What are your thoughts on maintaining work-life balance, and how do you achieve it?",
+"What are your favorite ways to stay connected with yourself and your emotions?",
+"How do you view vulnerability and its role in building intimate connections?",
+"What are your thoughts on seeking therapy or counseling for personal growth?",
+"How do you approach making decisions that align with your values and beliefs?",
+"What are your favorite ways to express gratitude to others in your life?",
+"How do you view the concept of time and its significance in your life?",
+"What are your thoughts on material possessions and their role in your happiness?",
+"How do you handle negative self-talk, and what strategies do you use to combat it?",
+"What are your favorite ways to engage in self-reflection and self-discovery?",
+"How do you approach vulnerability and opening up emotionally in a romantic relationship?",
+"What are your thoughts on setting boundaries in relationships, and how do you communicate them?",
+"How do you handle feelings of jealousy or insecurity, and what do you do to overcome them?",
+"What are your favorite ways to practice mindfulness and stay present in the moment?",
+"How do you view the importance of communication in building strong connections with others?",
+"What are your thoughts on personal growth and continuously evolving as an individual?",
+"How do you approach conflict resolution in relationships, and what strategies do you use?",
+"What are your favorite ways to express love and appreciation to your partner or loved ones?",
+"How do you view the importance of emotional intelligence in navigating life's challenges?",
+"What are your thoughts on giving and receiving constructive feedback to grow as a person?",
+"How do you approach embracing vulnerability and opening up emotionally with others?",
+"What are your favorite ways to connect with your inner child and nurture your inner self?",
+"How do you handle feelings of uncertainty and fear of the unknown?",
+"What are your thoughts on the role of gratitude in cultivating a positive mindset?",
+"How do you approach self-compassion and treating yourself with kindness?",
+"What are your favorite ways to cultivate a sense of belonging and connection with others?",
+"How do you view the importance of self-awareness and understanding your emotions?",
+"What are your thoughts on the connection between mental and physical well-being?",
+"How do you approach finding balance between personal goals and the needs of others?",
+"What are your favorite ways to engage in acts of kindness and make a difference in the world?",
+"How do you handle feelings of overwhelm and what helps you find clarity in those moments?",
+"What are your thoughts on vulnerability and its role in building trust in a relationship?",
+"How do you approach making decisions that align with your values and principles?",
+"What are your favorite ways to foster a sense of empathy and understanding with others?",
+"How do you view the concept of growth mindset and its impact on personal development?",
+"What are your thoughts on finding purpose and meaning in life's challenges and experiences?",
+"How do you handle feelings of self-doubt and imposter syndrome, and what helps you overcome them?",
+"What are your favorite ways to express love and appreciation to your friends and family?",
+"How do you approach setting healthy boundaries in various areas of your life?",
+"What are your thoughts on maintaining a positive outlook and optimism in challenging times?",
+"How do you handle feelings of vulnerability and opening up emotionally with friends and loved ones?",
+"What are your favorite ways to engage in self-care and prioritize your well-being?",
+"How do you view the importance of emotional intelligence in navigating interpersonal relationships?",
+"What are your thoughts on vulnerability and its role in building deep connections with others?",
+"How do you approach managing stress and finding balance in your daily life?",
+"What are your favorite ways to show kindness and compassion to yourself and others?",
+"How do you view the connection between personal values and living a fulfilling life?",
+"What are your thoughts on embracing vulnerability as a pathway to personal growth?",
+"How do you handle feelings of anxiety and what strategies do you use to manage them?",
+"What are your favorite ways to connect with nature and find peace in the outdoors?",
+"How do you view the role of mindfulness in cultivating a sense of presence and gratitude?",
+"What are your thoughts on seeking support and help from others during challenging times?",
+"How do you approach embracing vulnerability and building intimate connections in a romantic relationship?",
+"What are your favorite ways to express love and appreciation to your significant other?",
+"How do you handle feelings of loneliness, and what helps you feel more connected with others?",
+"What are your thoughts on the connection between self-compassion and resilience in life?",
+"How do you approach making decisions that align with your long-term goals and aspirations?",
+"What are your favorite ways to engage in acts of kindness and make a positive impact in your community?",
+"How do you view the importance of emotional vulnerability and authenticity in building relationships?",
+"What are your thoughts on embracing vulnerability as a pathway to personal growth and deeper connections?",
+"How do you handle feelings of overwhelm and stress, and what strategies do you use to find balance?",
+"If you could plan an ideal day and money was not a limiting factor, what would you do?",
+"What are your top three priorities?",
+"What was the best part of your home growing up? What was the most difficult part?",
+"What are you curious about?",
+"Who are the three most important people in your life right now?",
+"What do you think are the building blocks of a great relationship?",
+"What do most people not know about you?",
+"Who have you learned the most from?",
+"What are three truths that you would leave behind if they were your only legacy for your family?",
+"What have you always dreamed of doing?",
+"What are your 5 favorite foods, with the most favorite first?",
+"What are your 5 favorite kinds of meals, with the most favorite first?",
+"What are your 5 favorite desserts, with the most favorite first?",
+"What are your 5 favorite restaurants, with the most favorite first?",
+"What is your favorite color?",
+"What are your 5 favorite hobbies, with the most favorite  first?",
+"What are your 5 favorite recreations, with the most favorite  first?",
+"What are your 5 favorite sources of reading, with the most favorite  first?",
+"What gifts do you like?",
+"What is your favorite books(s) of the Bible? Why?",
+"What is your favorite verse(s) of the Bible?  Why?",
+"What is your favorite song?",
+"What makes you the most fulfilled or happiest as a woman/man?",
+"What makes you the most fulfilled or happiest as a wife/husband?",
+"What makes you the most fulfilled or happiest as a mother/father?",
+"What makes you saddest as a woman/man?",
+"What makes you saddest as a wife/husband?",
+"What makes you saddest as a mother/father?",
+"What do you fear the most?",
+"What other fears do you have?",
+"What do you look forward to the most?",
+"How much sleep do you need?",
+"What do you consider to be your skills?",
+"What do you believe to be your spiritual gifts?",
+"What are your weaknesses?",
+"To ask wife:  What things (personal, home, car, etc.) need repairing? To ask husband:  What things around the home need to be cleaned?",
+"To ask wife:  With what chores and responsibilities do you like my help? To ask husband:  How can I make it easier for you to lead our family?",
+"What caresses do you enjoy the most?",
+"What caresses do you enjoy the least?",
+"What action of mine provides you the greatest sexual pleasure?",
+"What other things stimulate you sexually?",
+"At what times do you need assurance of my love the most?",
+"How can that love be shown?",
+"What can I do that will make it easier to discuss and work on areas or problems that are uncomfortable to you?",
+"What concerns do you have that I do not seem interested in?",
+"What things do I do that irritate you?",
+"What desires do you have that we haven’t discussed?",
+"What do you enjoy doing with me, with the most enjoyable  first?",
+"What things can I do that show my appreciation of you?",
+"What varying desires (spiritual, physical, emotional, intellectual, social, worth, appreciational, recreational, security, etc.) would you like me to provide?",  
+"To ask wife:  In what ways would you like me to protect you (physically, spiritually, socially, emotionally)? To ask husband:  In what ways would you like me to respect and reverence you?",
+"In what ways would you like me to sacrifice for you?",
+"What things do you see by my actions that I place first in my life?",
+"What implied or unspoken desires and wishes of yours would you like for me to fulfill?",
+"What concerns and interests of yours would you like me to support?",
+"How much time would be good for us to spend together each day?",
+"In helping family members to use their skills and develop their abilities, what motivating factors would be helpful for me to use?",
+"What can I do that provides the greatest comfort and encouragement for you when you are hurt, fearful, anxious or worried?",
+"What personal habits do I have that you would like changed?",
+"What ways demonstrate to you that you are a very important person who is as important or more important than I am?",
+"What is your favorite board game and why?",
+"What is your favorite color, why?, Has it ever changed?"
+]
+
+// Get one random option
+function getRandomOption () {
+  const randomOption = options[Math.floor(Math.random() * options.length)]
+  document.querySelector('#list').innerHTML += 
+    `<li>${randomOption}</li>`
+}
+
+
+document.querySelector('#generate').addEventListener('click', () => {
+  getRandomOption()
+})
+
+document.querySelector('#clear').addEventListener('click', () => {
+  document.querySelector('#list').innerHTML = ''
+})  
+  </script>
+  
+  </body>
+</html>
